@@ -1,11 +1,11 @@
-# Beacon Coin
+# Beez Coin
 
-Shell script to install a `Beacon Coin Masternode` on a Linux server running Ubuntu 16.04. 
+Shell script to install a `Beez Coin Masternode` on a Linux server running Ubuntu 16.04. 
 Supports IPv4, IPv6 and a single master node per single VPS.
 
 ## Installation
 
-The installation script will do everything needed to setup your VPS with the latest updates and perform all steps required to install the Beacon masternode without any interaction or programming knowledge. 
+The installation script will do everything needed to setup your VPS with the latest updates and perform all steps required to install the Beez masternode without any interaction or programming knowledge. 
 
 When you run the script it will tell you what it will do on your system. Once completed there is a summary of the information you need to be aware of regarding your node setup which you can copy/paste to your local PC. 
 ```
@@ -17,8 +17,8 @@ You will need to run the script before setting up your node in your local wallet
 To get started with the installation, login to your VPS as the root user and run the two lines below.
 
 ```
-wget https://raw.githubusercontent.com/click2install/beacon/master/install-beacon.sh
-bash install-beacon.sh
+wget https://raw.githubusercontent.com/BeezCrypto/beez-mn-install-script/master/install-beez.sh
+bash install-beez.sh
 ```
 
 &nbsp;
@@ -29,22 +29,22 @@ Run the script first so you have the information when it finishes, to complete y
 ```
 The script assumes you are running a cold wallet on your local PC and this script will execute on a Ubuntu Linux server. The steps involved are:
 
- 1. Run the masternode installation script as per the [instructions above](https://github.com/click2install/beacon#installation).
+ 1. Run the masternode installation script as per the [instructions above](https://github.com/BeezCrypto/beez-mn-install-script#installation).
  2. When you are finished this process you will get some information on what has been done as well as some important information you will need for your cold wallet setup.
  3. **Copy/paste the output of this script into a text file and keep it safe.**
 
 You are now ready to configure your local wallet and finish the masternode setup:
 
- 1. Make sure you have downloaded the latest wallet from https://github.com/beaconcrypto/beacon/releases
+ 1. Make sure you have downloaded the latest wallet from https://github.com/BeezCrypto/BeezCore/releases
  2. Install the wallet on your local PC
  3. Start the wallet and let it completely synchronize to the network - this will take some time
  4. Create a new `Receiving Address` from the wallets `File` menu and name it appropriately, e.g. MN-1
- 5. Unlock your wallet and send **exactly 10,000 BCN** to the address created in step #4
+ 5. Unlock your wallet and send **exactly 10,000 BZZ** to the address created in step #4
  6. Wait for the transaction from step #5 to be fully confirmed. Look for a tick in the first column in your transactions tab
  7. Once confirmed, open your wallet console and type: `masternode outputs`
  8. Open your masternode configuration file from the wallets `Tools` menu item.
  9. In your masternodes.conf file add an entry that looks like: `[address-name from #4] [ip:port of your VPS from script output] [privkey from script output] [txid from from #7] [tx output index from #7]` - 
- 10. Your masternodes.conf file entry should look like: `MN-1 127.0.0.2:11115 93HaYBVUCYjEMeeH1Y4sBGLALQZE1Yc1K64xiqgX37tGBDQL8Xg 2bcd3c84c84f87eaa86e4e56834c92927a07f9e18718810b92e0d0324456a67c 0` and it must be all on one line in your masternodes config file. Make sure there are no blank lines in the file and no leading or trailing spaces on any of the lines in the file. Do not copy/paste from MS Word, if you are pasting any content use a plain text editor like Notepad, Textpad, etc. or you may get errors when the wallet starts.
+ 10. Your masternodes.conf file entry should look like: `MN-1 127.0.0.2:45292 93HaYBVUCYjEMeeH1Y4sBGLALQZE1Yc1K64xiqgX37tGBDQL8Xg 2bcd3c84c84f87eaa86e4e56834c92927a07f9e18718810b92e0d0324456a67c 0` and it must be all on one line in your masternodes config file. Make sure there are no blank lines in the file and no leading or trailing spaces on any of the lines in the file. Do not copy/paste from MS Word, if you are pasting any content use a plain text editor like Notepad, Textpad, etc. or you may get errors when the wallet starts.
  11. Save and close your masternodes.conf file
  12. Close your wallet and restart
  13. Go to Masternodes
@@ -56,50 +56,50 @@ You are now ready to configure your local wallet and finish the masternode setup
 &nbsp;
 
 ## Masternode commands (VPS)
-Because the masternode runs under a user account, you cannot login as root to your server and run commands like `beacon-cli masternode status`, if you do you will get an error. You need to first switch to the `beacon-mn1` user. **So make sure you keep the output of the script after it runs.**
+Because the masternode runs under a user account, you cannot login as root to your server and run commands like `beez-cli masternode status`, if you do you will get an error. You need to first switch to the `beez-mn1` user. **So make sure you keep the output of the script after it runs.**
 
-Each time you run the script to install a node it will automatically create a new `beacon-mn1` user for the node to run under. 
+Each time you run the script to install a node it will automatically create a new `beez-mn1` user for the node to run under. 
 
-The masternode runs as a service, so if you do not stop the service and just try to stop the daemon process, it will restart again. You can start and stop the masternode when logged in as root or the `beacon-mn1` user by running the following two commands:
+The masternode runs as a service, so if you do not stop the service and just try to stop the daemon process, it will restart again. You can start and stop the masternode when logged in as root or the `beez-mn1` user by running the following two commands:
 
 #### To stop your masternode 
 ```
-systemctl stop beacon-mn1.service
+systemctl stop beez-mn1.service
 ```
 
 #### To start your masternode 
 ```
-systemctl start beacon-mn1.service
+systemctl start beez-mn1.service
 ```
 
 #### To interactively switch from the root user to the masternode user, you can run:
 ```
- su - beacon-mn1
+ su - beez-mn1
 ```
 If you are asked for a password, it is in the script output you received when you installed the masternode, you can right click and paste the password (which will not be shown), then press Enter.
-The following commands can then be run against the node which is running as the `beacon-mn1` user.
+The following commands can then be run against the node which is running as the `beez-mn1` user.
 
 #### To query your masternodes status
 ```
- beacon-cli masternode status 
+ beez-cli masternode status 
 ```
 
 #### To query your masternode information
 ```
- beacon-cli getinfo
+ beez-cli getinfo
 ```
 
 #### To query your masternodes sync status
 ```
- beacon-cli mnsync status
+ beez-cli mnsync status
 ```
 
 ## Removing a masternode and user account (VPS)
 If something goes wrong with your installation or you want to remove the masternode, you can do so with the following command.
 ```
- userdel -r beacon-mn1
+ userdel -r beez-mn1
 ```
-This will remove the user and its home directory. You then re-run the installation script and it will re-create everything for the `beacon-mn1` user.
+This will remove the user and its home directory. You then re-run the installation script and it will re-create everything for the `beez-mn1` user.
 
 &nbsp;
 
