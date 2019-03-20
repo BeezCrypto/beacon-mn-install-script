@@ -39,7 +39,7 @@ You are now ready to configure your local wallet and finish the masternode setup
  2. Install the wallet on your local PC
  3. Start the wallet and let it completely synchronize to the network - this will take some time
  4. Create a new `Receiving Address` from the wallets `File` menu and name it appropriately, e.g. MN-1
- 5. Unlock your wallet and send **exactly 10,000 BZZ** to the address created in step #4
+ 5. Unlock your wallet and send **exactly 10,000,000 BZZ** to the address created in step #4
  6. Wait for the transaction from step #5 to be fully confirmed. Look for a tick in the first column in your transactions tab
  7. Once confirmed, open your wallet console and type: `masternode outputs`
  8. Open your masternode configuration file from the wallets `Tools` menu item.
