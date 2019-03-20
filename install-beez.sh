@@ -11,7 +11,7 @@
 TMP_FOLDER=$(mktemp -d)
 
 DAEMON_ARCHIVE=${1:-"https://github.com/BeezCrypto/BeezCore/releases/download/v1.0.0.0/beez-ubuntu-16.04-daemon.zip"}
-ARCHIVE_STRIP=" --strip=1"
+ARCHIVE_STRIP=""
 DEFAULT_PORT=45292
 
 NODE_IP=$(curl icanhazip.com -s)
